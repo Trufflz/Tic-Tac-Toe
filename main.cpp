@@ -26,24 +26,21 @@ int main()
     vector<char> positions {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     output(positions);
 
-
-
-
     return 0;
 }
 
 
 void output(vector<char>& pos)
 {
-    cout << "    |    |    " << endl;
-    cout << " " << pos.at(0) << "  | " << pos.at(1) << "  | " << pos.at(2) << " " << endl;
-    cout << "____|____|____" << endl;
-    cout << "    |    |    " << endl;
-    cout << " " << pos.at(3) << "  | " << pos.at(4) << "  | " << pos.at(5) << " " << endl;
-    cout << "____|____|____" << endl;
-    cout << "    |    |    " << endl;
-    cout << " " << pos.at(6) << "  | " << pos.at(7) << "  | " << pos.at(8) << " " << endl;
-    cout << "    |    |    " << endl;
+    cout << "       |    |    " << endl;
+    cout << "    " << pos.at(0) << "  | " << pos.at(1) << "  | " << pos.at(2) << " " << endl;
+    cout << "   ____|____|____" << endl;
+    cout << "       |    |    " << endl;
+    cout << "    " << pos.at(3) << "  | " << pos.at(4) << "  | " << pos.at(5) << " " << endl;
+    cout << "   ____|____|____" << endl;
+    cout << "       |    |    " << endl;
+    cout << "    " << pos.at(6) << "  | " << pos.at(7) << "  | " << pos.at(8) << " " << endl;
+    cout << "       |    |    " << endl;
 }
 
 void insert(int input, vector<char>& pos)
@@ -233,6 +230,6 @@ void win_condition(vector<char>& pos)
 
     //---Tie---//
     else if (counter == 9) {
-        cout << "It's a tie  :(" << endl;
+        cout << "It's a draw.  :(" << endl;
     }
 }
