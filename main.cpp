@@ -19,12 +19,60 @@ void introLines()
 }
 
 
+
 int main()
 {
     introLines();
     vector<char> positions {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     output(positions);
 
+    bool win = false;
+    bool draw = true;
+
+    while(!win || !draw) //while not a win or draw
+    {
+        cout << "please enter a number: ";
+        int num;
+        cin >> num;
+        insert(num, positions);
+        output(positions);
+        if (positions.at(0) == positions.at(1) && positions.at(1) == positions.at(2))
+        {
+            if (counter % 2 == 0)
+            {
+                cout << player1NAME << " has won!" << endl;
+            }
+            else
+            {
+                cout << player2NAME << " has won!" << endl;
+            }
+            win = true;
+        }
+        else if (positions.at(3) == positions.at(4) && positions.at(4) == positions.at(5))
+        {
+            if (counter % 2 == 0)
+            {
+                cout << player1NAME << " has won!" << endl;
+            }
+            else
+            {
+                cout << player2NAME << " has won!" << endl;
+            }
+            win = true;
+        }
+        else if (positions.at(3) == positions.at(4) && positions.at(5) == positions.at(4))
+        {
+            if (counter % 2 == 0)
+            {
+                cout << player1NAME << " has won!" << endl;
+            }
+            else
+            {
+                cout << player2NAME << " has won!" << endl;
+            }
+            win = true;
+        }
+    }
     return 0;
 }
 
