@@ -1,12 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <ctype.h>
 using namespace std;
 
 string player1NAME;
 string player2NAME;
 bool win = false;
-
 int counter = 0;
 
 void output(vector<char>& pos);
@@ -14,12 +12,13 @@ void insert(int input, vector<char>& pos);
 void win_condition(vector<char>& pos);
 void introLines()
 {
-    cout << "Enter your name player 1:" << endl;
-    getline(cin, player1NAME);
-    cout << "Enter your name player 2:" << endl;
-    getline(cin, player2NAME);
+    cout << "Enter your name player 1: ";
+    cin >> player1NAME;
+    cout << "Enter your name player 2: ";
+    cin >> player2NAME;
+    cout << endl;
     cout << player1NAME << " will have the first move. [Has X]" << endl;
-    cout << player2NAME << " will have the next move. [Has O]" << endl;
+    cout << player2NAME << " will have the next move. [Has O]" << endl << endl;
 }
 
 
@@ -42,10 +41,18 @@ int main()
         }
     
         int num;
-        cin >> num;
+        while (!(cin >> num))
+        {
+            cout << "Please enter a number (1-9): ";
+            cin.clear();
+            cin.ignore(123, '\n');
+        }
+        
+        cout << endl << endl;
         insert(num, positions);
         output(positions);
         win_condition(positions);
+        cout << endl;
     }
     return 0;
 }
@@ -53,20 +60,31 @@ int main()
 
 void output(vector<char>& pos)
 {
-    cout << "       |    |    " << endl;
-    cout << "    " << pos.at(0) << "  | " << pos.at(1) << "  | " << pos.at(2) << " " << endl;
-    cout << "   ____|____|____" << endl;
-    cout << "       |    |    " << endl;
-    cout << "    " << pos.at(3) << "  | " << pos.at(4) << "  | " << pos.at(5) << " " << endl;
-    cout << "   ____|____|____" << endl;
-    cout << "       |    |    " << endl;
-    cout << "    " << pos.at(6) << "  | " << pos.at(7) << "  | " << pos.at(8) << " " << endl;
-    cout << "       |    |    " << endl;
+    cout << "       --- PLAY ---" << endl;
+    cout << "           [";
+    if (counter % 2 == 0)
+    {
+        cout << "X]" << endl;
+    }
+    else {
+        cout << "O]" << endl;
+    }
+
+    cout << "          |    |    " << endl;
+    cout << "       " << pos.at(0) << "  | " << pos.at(1) << "  | " << pos.at(2) << " " << endl;
+    cout << "      ____|____|____" << endl;
+    cout << "          |    |    " << endl;
+    cout << "       " << pos.at(3) << "  | " << pos.at(4) << "  | " << pos.at(5) << " " << endl;
+    cout << "      ____|____|____" << endl;
+    cout << "          |    |    " << endl;
+    cout << "       " << pos.at(6) << "  | " << pos.at(7) << "  | " << pos.at(8) << " " << endl;
+    cout << "          |    |    " << endl;
 }
 
 void insert(int input, vector<char>& pos)
 {
-    if (input == 1 && (pos.at(0) != 'X' && pos.at(0) != 'O')) {
+    if (input == 1 && (pos.at(0) != 'X' && pos.at(0) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(0) = 'X'; 
@@ -77,7 +95,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 2 && (pos.at(1) != 'X' && pos.at(1) != 'O')) {
+    else if (input == 2 && (pos.at(1) != 'X' && pos.at(1) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(1) = 'X'; 
@@ -88,7 +107,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 3 && (pos.at(2) != 'X' && pos.at(2) != 'O')) {
+    else if (input == 3 && (pos.at(2) != 'X' && pos.at(2) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(2) = 'X'; 
@@ -99,7 +119,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 4 && (pos.at(3) != 'X' && pos.at(3) != 'O')) {
+    else if (input == 4 && (pos.at(3) != 'X' && pos.at(3) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(3) = 'X'; 
@@ -110,7 +131,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 5 && (pos.at(4) != 'X' && pos.at(4) != 'O')) {
+    else if (input == 5 && (pos.at(4) != 'X' && pos.at(4) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(4) = 'X'; 
@@ -121,7 +143,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 6 && (pos.at(5) != 'X' && pos.at(5) != 'O')) {
+    else if (input == 6 && (pos.at(5) != 'X' && pos.at(5) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(5) = 'X'; 
@@ -132,7 +155,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 7 && (pos.at(6) != 'X' && pos.at(6) != 'O')) {
+    else if (input == 7 && (pos.at(6) != 'X' && pos.at(6) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(6) = 'X'; 
@@ -143,7 +167,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 8 && (pos.at(7) != 'X' && pos.at(7) != 'O')) {
+    else if (input == 8 && (pos.at(7) != 'X' && pos.at(7) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(7) = 'X'; 
@@ -154,7 +179,8 @@ void insert(int input, vector<char>& pos)
         }
     }
 
-    else if (input == 9 && (pos.at(8) != 'X' && pos.at(8) != 'O')) {
+    else if (input == 9 && (pos.at(8) != 'X' && pos.at(8) != 'O'))
+    {
         if (counter % 2 == 0)
         {
            pos.at(8) = 'X'; 
@@ -166,7 +192,9 @@ void insert(int input, vector<char>& pos)
     }
 
     else {
-        cout << "Invalid. Please pick another spot." << endl;
+        cout << endl;
+        cout << "# Invalid. Please pick another spot #" << endl;
+        --counter;
     }
     ++counter;
 }
@@ -267,7 +295,7 @@ void win_condition(vector<char>& pos)
     //---Tie---//
     else if (counter == 9)
     {
-        cout << "It's a draw.  :(" << endl;
+        cout << "      It's a draw  :(" << endl;
         win = true;
     }
 }
