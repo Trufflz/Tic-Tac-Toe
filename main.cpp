@@ -4,6 +4,8 @@ using namespace std;
 
 string player1NAME;
 string player2NAME;
+bool win = false;
+
 int counter = 0;
 
 void output(vector<char>& pos);
@@ -27,52 +29,14 @@ int main()
     vector<char> positions {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     output(positions);
 
-    bool win = false;
-    bool draw = true;
-
-    while(!win || !draw) //while not a win or draw
+    while(!win) //while not a win and draw
     {
         cout << "please enter a number: ";
         int num;
         cin >> num;
         insert(num, positions);
         output(positions);
-        if (positions.at(0) == positions.at(1) && positions.at(1) == positions.at(2))
-        {
-            if (counter % 2 == 0)
-            {
-                cout << player1NAME << " has won!" << endl;
-            }
-            else
-            {
-                cout << player2NAME << " has won!" << endl;
-            }
-            win = true;
-        }
-        else if (positions.at(3) == positions.at(4) && positions.at(4) == positions.at(5))
-        {
-            if (counter % 2 == 0)
-            {
-                cout << player1NAME << " has won!" << endl;
-            }
-            else
-            {
-                cout << player2NAME << " has won!" << endl;
-            }
-            win = true;
-        }
-        else if (positions.at(3) == positions.at(4) && positions.at(5) == positions.at(4))
-        {
-            if (counter % 2 == 0)
-            {
-                cout << player1NAME << " has won!" << endl;
-            }
-            else
-            {
-                cout << player2NAME << " has won!" << endl;
-            }
-            win = true;
-        }
+        win_condition(positions);
     }
     return 0;
 }
@@ -209,6 +173,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(0) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     else if (pos.at(3) == pos.at(4) && pos.at(4) == pos.at(5)) {
@@ -218,6 +183,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(3) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     else if (pos.at(6) == pos.at(7) && pos.at(7) == pos.at(8)) {
@@ -227,6 +193,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(6) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     //---Vertical Wins---//
@@ -237,6 +204,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(0) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     else if (pos.at(1) == pos.at(4) && pos.at(4) == pos.at(7)) {
@@ -246,6 +214,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(1) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     else if (pos.at(2) == pos.at(5) && pos.at(5) == pos.at(8)) {
@@ -255,6 +224,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(2) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     //---Diagonal Wins---//
@@ -265,6 +235,7 @@ void win_condition(vector<char>& pos)
         else if (pos.at(0) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     else if (pos.at(2) == pos.at(4) && pos.at(4) == pos.at(6)) {
@@ -274,10 +245,13 @@ void win_condition(vector<char>& pos)
         else if (pos.at(2) == 'O') {
             cout << player2NAME << " has won!!!";
         }
+        win = true;
     }
 
     //---Tie---//
     else if (counter == 9) {
         cout << "It's a draw.  :(" << endl;
     }
+    win = true;
+    
 }
