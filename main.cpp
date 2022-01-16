@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <ctype.h>
 using namespace std;
 
 string player1NAME;
@@ -22,16 +23,24 @@ void introLines()
 }
 
 
-
 int main()
 {
     introLines();
     vector<char> positions {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     output(positions);
 
-    while(!win) //while not a win and draw
+    while(win == false)
     {
-        cout << "please enter a number: ";
+        cout << "Please enter a number ";
+        if (counter % 2 == 0)
+        {
+            cout << player1NAME << " (1-9): ";
+        }
+        else if (counter % 2 == 1)
+        {
+            cout << player2NAME << " (1-9): ";
+        }
+    
         int num;
         cin >> num;
         insert(num, positions);
@@ -159,14 +168,14 @@ void insert(int input, vector<char>& pos)
     else {
         cout << "Invalid. Please pick another spot." << endl;
     }
-
     ++counter;
 }
 
 void win_condition(vector<char>& pos)
 {
     //---Horizontal Wins---//
-    if (pos.at(0) == pos.at(1) && pos.at(1) == pos.at(2)) {
+    if (pos.at(0) == pos.at(1) && pos.at(1) == pos.at(2))
+    {
         if (pos.at(0) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -176,7 +185,8 @@ void win_condition(vector<char>& pos)
         win = true;
     }
 
-    else if (pos.at(3) == pos.at(4) && pos.at(4) == pos.at(5)) {
+    else if (pos.at(3) == pos.at(4) && pos.at(4) == pos.at(5))
+    {
         if (pos.at(3) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -186,7 +196,8 @@ void win_condition(vector<char>& pos)
         win = true;
     }
 
-    else if (pos.at(6) == pos.at(7) && pos.at(7) == pos.at(8)) {
+    else if (pos.at(6) == pos.at(7) && pos.at(7) == pos.at(8))
+    {
         if (pos.at(6) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -197,7 +208,8 @@ void win_condition(vector<char>& pos)
     }
 
     //---Vertical Wins---//
-    else if (pos.at(0) == pos.at(3) && pos.at(3) == pos.at(6)) {
+    else if (pos.at(0) == pos.at(3) && pos.at(3) == pos.at(6))
+    {
         if (pos.at(0) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -207,7 +219,8 @@ void win_condition(vector<char>& pos)
         win = true;
     }
 
-    else if (pos.at(1) == pos.at(4) && pos.at(4) == pos.at(7)) {
+    else if (pos.at(1) == pos.at(4) && pos.at(4) == pos.at(7))
+    {
         if (pos.at(1) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -217,7 +230,8 @@ void win_condition(vector<char>& pos)
         win = true;
     }
 
-    else if (pos.at(2) == pos.at(5) && pos.at(5) == pos.at(8)) {
+    else if (pos.at(2) == pos.at(5) && pos.at(5) == pos.at(8))
+    {
         if (pos.at(2) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -228,7 +242,8 @@ void win_condition(vector<char>& pos)
     }
 
     //---Diagonal Wins---//
-    else if (pos.at(0) == pos.at(4) && pos.at(4) == pos.at(8)) {
+    else if (pos.at(0) == pos.at(4) && pos.at(4) == pos.at(8))
+    {
         if (pos.at(0) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -238,7 +253,8 @@ void win_condition(vector<char>& pos)
         win = true;
     }
 
-    else if (pos.at(2) == pos.at(4) && pos.at(4) == pos.at(6)) {
+    else if (pos.at(2) == pos.at(4) && pos.at(4) == pos.at(6))
+    {
         if (pos.at(2) == 'X') {
             cout << player1NAME << " has won!!!";
         }
@@ -249,9 +265,9 @@ void win_condition(vector<char>& pos)
     }
 
     //---Tie---//
-    else if (counter == 9) {
+    else if (counter == 9)
+    {
         cout << "It's a draw.  :(" << endl;
+        win = true;
     }
-    win = true;
-    
 }
