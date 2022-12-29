@@ -1,2 +1,2 @@
 # tic-tac-toe
-1st Hackathon Project
+My 1st Hackathon Project done in January 2022 in collaboration with Ben Nguyen
